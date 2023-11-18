@@ -17,10 +17,9 @@ export default function Home() {
           Build your own <span className="text-violet-600">Vocabulary</span>{" "}
           Universe.
         </h1>
-        <p className="mt-5 max-2-prose text-zinc-700 sm:text-lg">
+        <p className="mt-5 max-2-prose text-zinc-200 sm:text-lg">
           Learn vocabulary for GRE, TOEFL, GMAT or just to enhance your
-          language. Vocabverse creates personalized graphs for you to study
-          words.
+          language.
         </p>
         <Link
           className={buttonVariants({
@@ -61,7 +60,7 @@ export default function Home() {
                     width={1809}
                     height={1126}
                     quality={100}
-                    className="rounded-md bg-[#010012] p-2 sm:p-8 md:p-10 shadow-2xl ring-1 ring-gray-900/10"
+                    className="rounded-md shadow-2xl ring-1 ring-gray-900/10"
                   />
                 </div>
               </div>
@@ -87,7 +86,7 @@ export default function Home() {
       <div className="mx-auto mb-32 mt-32 max-w-5xl sm:mt-56">
         <div className="mb-12 px-6 lg:px-8">
           <div className="mx-auto max-w-2xl sm:text-center">
-            <h2 className="mt-2 font-bold text-4xl text-gray-900 sm:text-5xl">
+            <h2 className="mt-2 font-bold text-4xl text-gray-300 sm:text-5xl">
               Personalised Vocabulary Learning
             </h2>
             <p className="mt-4 text-lg text-gray-400">
@@ -104,7 +103,7 @@ export default function Home() {
               <span className="text-xl font-semibold">
                 Sign up for an account
               </span>
-              <span className="mt-2 text-zinc-700">
+              <span className="mt-2 text-zinc-400">
                 Either starting out with a free plan or choose our{" "}
                 <Link
                   href="/pricing"
@@ -123,7 +122,7 @@ export default function Home() {
               <span className="text-xl font-semibold">
                 Create your Vocabverse
               </span>
-              <span className="mt-2 text-zinc-700">
+              <span className="mt-2 text-zinc-400">
                 Select our pre-built lists for GRE/TOEFL or add your own words.
               </span>
             </div>
@@ -132,8 +131,10 @@ export default function Home() {
           <li className="md:flex-1">
             <div className="flex flex-col space-y-2 border-l-4 border-zinc-300 py-2 pl-4 md:border-l-0 md:border-t-2 md:pb-0 md:pl-0 md:pt-4">
               <span className="text-sm font-medium text-blue-600">Step 3</span>
-              <span className="text-xl font-semibold">Start Learning!</span>
-              <span className="mt-2 text-zinc-700">
+              <span className="text-xl font-semibold">
+                Catch Wondlings and Learn!
+              </span>
+              <span className="mt-2 text-zinc-400">
                 Generate custom mnemonics and custom stories from your
                 vocabverse and start learning.
               </span>
