@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const replicate = new Replicate({
-  auth: process.env.REPLICATE_API_TOKEN,
+  auth: 'r8_Tp5tbTxyqKj6Ya3WRwRDqcMmWM4P6u74GMMaB',
 });
 
 async function main() {
