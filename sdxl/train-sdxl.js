@@ -1,10 +1,11 @@
-import Replicate from 'replicate'
-import * as dotenv from 'dotenv'
-dotenv.config()
+const Replicate = require("replicate");
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const replicate = new Replicate({
   auth: process.env.REPLICATE_API_TOKEN,
-})
+});
 
 async function main() {
   const training = await replicate.trainings.create(
@@ -14,13 +15,10 @@ async function main() {
     {
       destination: 'jeetch/vocabverse-wordlings',
       input: {
-        input_images: 'https://example.com/your-images.zip'
+        input_images: 'https://github.com/jeetch/vocabverse/blob/main/sdxl/wordlings_dataset_v1.zip'
       }
-    })
-  console.log(`URL: https://replicate.com/p/${training.id}`)
+    });
+  console.log(`URL: https://replicate.com/p/${training.id}`);
 }
 
-main()
-
-// Run: 
-// node train-sdxl.js
+main();
