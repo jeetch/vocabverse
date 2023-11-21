@@ -15,7 +15,7 @@ async function main() {
     {
       destination: 'jeetch/vocabverse-wordlings',
       input: {
-        input_images: 'https://github.com/jeetch/vocabverse/blob/main/sdxl/wordlings_dataset_v1.zip'
+        input_images: 'https://github.com/jeetch/vocabverse/raw/main/sdxl/wordlings_dataset_v1.zip'
       }
     });
   console.log(`URL: https://replicate.com/p/${training.id}`);
