@@ -37,15 +37,15 @@ const Navbar = () => {
                     size: "sm",
                   })}
                 >
-                  Sign in
+                  Sign in <ArrowRight className="ml-1.5 h-5 w-5" />
                 </LoginLink>
-                <LoginLink
+                {/* <LoginLink
                   className={buttonVariants({
                     size: "sm",
                   })}
                 >
-                  Get started <ArrowRight className="ml-1.5 h-5 w-5" />
-                </LoginLink>
+                  Sign In <ArrowRight className="ml-1.5 h-5 w-5" />
+                </LoginLink> */}
               </>
             ) : (
               <>

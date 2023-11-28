@@ -39,6 +39,7 @@ export default function Home() {
                 wrapper="span"
                 speed={5}
                 repeat={Infinity}
+                cursor={false}
               />
             </span>{" "}
           </div>
@@ -55,7 +56,10 @@ export default function Home() {
         <Link
           className={buttonVariants({
             size: "lg",
-            className: cn("mt-5", player.className),
+            className: cn(
+              "mt-5 hover:scale-110 hover:bg-white  ",
+              player.className
+            ),
           })}
           href="/dashboard"
           target="_blank"

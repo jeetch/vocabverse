@@ -5,6 +5,7 @@ const Page = () => {
 
   return (
     <div className="flex justify-center items-center h-screen">
+      
       <iframe src="/game_files/index.html" className="w-[1050px] h-[595px]" />
     </div>
   );
