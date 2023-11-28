@@ -8,6 +8,10 @@ import {
   getKindeServerSession,
 } from "@kinde-oss/kinde-auth-nextjs/server";
 import { ArrowRight } from "lucide-react";
+import { Press_Start_2P } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const player = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 
 const Navbar = () => {
   const { getUser } = getKindeServerSession();
@@ -17,22 +21,16 @@ const Navbar = () => {
     <nav className="sticky h-14 inset-x-0 top-0 z-30 w-full border-b border-gray-800  bg-[#14001e]/75 backdrop-blur-lg transition-all">
       <MaxWidthWrapper>
         <div className="flex h-14 items-center justify-between border-b border-zinc-800">
-          <Link href="/" className="flex z-40 font-semibold">
+          <Link
+            href="/"
+            className={cn("flex z-40 font-semibold ", player.className)}
+          >
             <span>Vocabverse</span>
           </Link>
 
           <div className="hidden items-center space-x-4 sm:flex">
             {!user ? (
               <>
-                <Link
-                  href="/pricing"
-                  className={buttonVariants({
-                    variant: "ghost",
-                    size: "sm",
-                  })}
-                >
-                  Pricing
-                </Link>
                 <LoginLink
                   className={buttonVariants({
                     variant: "ghost",
@@ -41,13 +39,13 @@ const Navbar = () => {
                 >
                   Sign in
                 </LoginLink>
-                <RegisterLink
+                <LoginLink
                   className={buttonVariants({
                     size: "sm",
                   })}
                 >
                   Get started <ArrowRight className="ml-1.5 h-5 w-5" />
-                </RegisterLink>
+                </LoginLink>
               </>
             ) : (
               <>

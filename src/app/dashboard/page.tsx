@@ -1,21 +1,26 @@
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
+import Link from "next/link";
+
 const Page = () => {
   const {} = getKindeServerSession();
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-      }}
-    >
-      <iframe
-        src="/game_files/index.html"
-        style={{ width: "1050px", height: "595px" }}
-      />
+    <div className="flex justify-center items-center h-screen space-x-4">
+      <div className="w-[1050px] h-[595px] bg-white bg-opacity-10 hover:bg-opacity-20">
+        <Link href="/generation">
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Go to Generation Page
+          </button>
+        </Link>
+      </div>
+      <div className="w-[1050px] h-[595px] bg-white bg-opacity-10 hover:bg-opacity-20">
+        <Link href="/game">
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Go to Game
+          </button>
+        </Link>
+      </div>
     </div>
   );
 };
