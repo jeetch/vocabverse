@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Press_Start_2P, Inter } from "next/font/google";
+
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/Navbar";
 
+import { Press_Start_2P, Inter } from "next/font/google";
 const player = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 const inter = Inter({ weight: "400", subsets: ["latin"] });
 
