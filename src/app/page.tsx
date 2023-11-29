@@ -7,6 +7,7 @@ import Image from "next/image";
 import { Press_Start_2P } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { TypeAnimation } from "react-type-animation";
+import { LoginLink } from "@kinde-oss/kinde-auth-nextjs/server";
 
 const player = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 
@@ -53,7 +54,7 @@ export default function Home() {
           Build your own creatures and characters in a Pokemon-like RPG game and
           learn vocabulary while having fun for your standardized tests
         </p>
-        <Link
+        <LoginLink
           className={buttonVariants({
             size: "lg",
             className: cn(
@@ -61,12 +62,12 @@ export default function Home() {
               player.className
             ),
           })}
-          href="/dashboard"
+          // href="/dashboard"
           target="_blank"
         >
           Let&apos;s Go!
           {/* <ArrowRight className="ml-2 h-5 w-5" /> */}
-        </Link>
+        </LoginLink>
       </MaxWidthWrapper>
 
       {/* value proposition section */}

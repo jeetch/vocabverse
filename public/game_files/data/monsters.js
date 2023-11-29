@@ -21,15 +21,15 @@ const monsters = {
       y: 100
     },
     image: {
-      src: './img/draggleSprite.png'
+      src: './img/garrulixSprite.png'
     },
     frames: {
-      max: 4,
+      max: 1,
       hold: 30
     },
     animate: true,
     isEnemy: true,
-    name: 'Draggle',
+    name: 'Garrulix',
     attacks: [attacks.Tackle, attacks.Fireball]
   }
 }
