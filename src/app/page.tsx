@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import { TypeAnimation } from "react-type-animation";
 import {
   LoginLink,
+  RegisterLink,
   getKindeServerSession,
 } from "@kinde-oss/kinde-auth-nextjs/server";
 
@@ -58,7 +59,7 @@ export default function Home() {
           learn vocabulary while having fun for your standardized tests
         </p>
 
-        <LoginLink
+        <RegisterLink
           className={buttonVariants({
             size: "lg",
             className: cn(
@@ -70,7 +71,7 @@ export default function Home() {
         >
           Let&apos;s Go!
           {/* <ArrowRight className="ml-2 h-5 w-5" /> */}
-        </LoginLink>
+        </RegisterLink>
       </MaxWidthWrapper>
 
       {/* value proposition section */}
