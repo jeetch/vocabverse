@@ -30,7 +30,7 @@
     "src/app/api/auth/[kindeAuth]/route.js",
     "src/app/generator/page.jse.js",
     "src/app/generator/page.js",
-    "src/app/api/image/route.js"
+    "image/route.js"
   ],
   "exclude": ["node_modules"]
 }
