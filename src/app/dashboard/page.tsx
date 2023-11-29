@@ -1,6 +1,14 @@
 import { cn } from "@/lib/utils";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { Press_Start_2P } from "next/font/google";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 const player = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 
@@ -19,26 +27,26 @@ const Page = () => {
       </h1>
       <div className="flex justify-center items-stretch space-x-4">
         <Link href="/game">
-          <div className="flex flex-col items-center bg-white bg-opacity-10 hover:bg-opacity-20 border border-gray-200 rounded-lg shadow cursor-pointer p-20">
-            <div className="text-gray-200 text-center">
-              <h2 className="text-2xl font-bold mb-4">Continue Your Journey</h2>
-              <p className="font-normal">
-                Resume your adventure in the world of Wordlings.
-              </p>
-            </div>
-          </div>
+          <Card>
+            <CardHeader>
+              <CardTitle>Continue Your Journey</CardTitle>
+              {/* <CardDescription>Card Description</CardDescription> */}
+            </CardHeader>
+            <CardContent>
+              <p>Resume your adventure in the world of Wordlings.</p>
+            </CardContent>
+          </Card>
         </Link>
         <Link href="/generator">
-          <div className="flex flex-col items-center bg-white bg-opacity-10 hover:bg-opacity-20 border border-gray-200 rounded-lg shadow cursor-pointer p-20">
-            <div className="text-gray-200 text-center">
-              <h2 className="text-2xl font-bold mb-4">
-                Generate Custom Wordlings
-              </h2>
-              <p className="font-normal">
-                Click here to create and explore new Wordlings!
-              </p>
-            </div>
-          </div>
+          <Card>
+            <CardHeader>
+              <CardTitle>Generate Custom Wordlings</CardTitle>
+              {/* <CardDescription>Card Description</CardDescription> */}
+            </CardHeader>
+            <CardContent>
+              <p>Click here to create and explore new Wordlings!</p>
+            </CardContent>
+          </Card>
         </Link>
       </div>
     </div>
