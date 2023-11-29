@@ -29,9 +29,7 @@ const Page = () => {
   });
 
   const [loading, setLoading] = useState(false);
-  const [res, setRes] = useState<string>(
-    "Enter a word or try 'abate', 'garrulous', 'munificent' and try it out!"
-  );
+  const [res, setRes] = useState<string>("");
   const [sdprompt, setSdprompt] = useState<string>("");
   const [wordling_name, setWordling_name] = useState<string>("");
   const [wordling_desc, setWordling_desc] = useState<string>(
