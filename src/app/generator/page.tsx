@@ -17,6 +17,24 @@ const player = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 const Page = () => {
   const {} = getKindeServerSession();
 
+  const greWords = [
+    "abate",
+    "abdicate",
+    "aberration",
+    "abstain",
+    "adversity",
+    "aesthetic",
+    "amiable",
+    "anachronistic",
+    "arid",
+    "asylum",
+  ];
+
+  const setRandomWord = () => {
+    const randomWord = greWords[Math.floor(Math.random() * greWords.length)];
+    setValue("product", randomWord);
+  };
+
   const {
     register,
     handleSubmit,
@@ -107,19 +125,27 @@ const Page = () => {
             Generate your own wordlings!
           </h1>
 
-          <div className="flex flex-col gap-4">
+          <div className={cn("flex flex-col gap-4", player.className)}>
             <form
               onSubmit={handleSubmit(onSubmit)}
               className="flex items-center gap-2"
             >
               <Input
-                placeholder="Enter the word you want to learn and leave the rest to us"
+                placeholder="Enter the word you want to learn"
                 {...register("product", { required: true })}
                 className=""
               />
               {errors.question && <p>This field is required</p>}
               <Button type="submit" className="h-full" variant={"outline"}>
                 Submit
+              </Button>
+              <Button
+                type="button"
+                className="h-full"
+                variant={"outline"}
+                onClick={setRandomWord}
+              >
+                Random word
               </Button>
             </form>
 
@@ -164,6 +190,18 @@ const Page = () => {
                   <p className={cn("text-sm mb-4", player.className)}>
                     {wordling_sentence}
                   </p>
+                </>
+              )}
+
+              {!imgloading && res && (
+                <>
+                  <Button
+                    type="submit"
+                    className={cn("mt-4 text-md h-full", player.className)}
+                    variant={"outline"}
+                  >
+                    Add wordling to your vocabverse!
+                  </Button>
                 </>
               )}
             </div>

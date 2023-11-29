@@ -113,7 +113,7 @@ class Monster extends Sprite {
   }
 
   faint() {
-    document.querySelector('#dialogueBox').innerHTML = this.name + ' fainted!'
+    document.querySelector('#dialogueBox').innerHTML = 'Well done!' + this.name + ' is derived from Garrulous which means talkative. The wordling is added to your collection!'
     gsap.to(this.position, {
       y: this.position.y + 20
     })

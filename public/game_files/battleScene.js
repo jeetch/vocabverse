@@ -28,14 +28,16 @@ function initBattle() {
 
   emby.attacks.forEach((attack) => {
     const button = document.createElement('button')
-    button.innerHTML = attack.name
+    button.innerHTML = attack.desc
+    button.setAttribute('attack-name', attack.name) // Set the desc as the title attribute
     document.querySelector('#attacksBox').append(button)
   })
 
   // our event listeners for our buttons (attack)
   document.querySelectorAll('button').forEach((button) => {
     button.addEventListener('click', (e) => {
-      const selectedAttack = attacks[e.currentTarget.innerHTML]
+      const attackName = e.currentTarget.getAttribute('attack-name');
+      const selectedAttack = attacks[attackName]
       emby.attack({
         attack: selectedAttack,
         recipient: draggle,
@@ -105,7 +107,8 @@ function initBattle() {
     })
 
     button.addEventListener('mouseenter', (e) => {
-      const selectedAttack = attacks[e.currentTarget.innerHTML]
+      const attackName = e.currentTarget.getAttribute('attack-name');
+      const selectedAttack = attacks[attackName];
       document.querySelector('#attackType').innerHTML = selectedAttack.type
       document.querySelector('#attackType').style.color = selectedAttack.color
     })

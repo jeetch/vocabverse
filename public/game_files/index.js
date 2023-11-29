@@ -80,7 +80,7 @@ charactersMap.forEach((row, i) => {
           },
           scale: 3,
           animate: true,
-          dialogue: ['...', 'Hey mister, have you seen my Doggochu?']
+          dialogue: ['...', 'Hey mister, there is a lot of noise coming from those patches, check it out']
         })
       )
     }
@@ -98,7 +98,7 @@ charactersMap.forEach((row, i) => {
             hold: 60
           },
           scale: 3,
-          dialogue: ['My bones hurt.']
+          dialogue: ['Are you challenging me to a word-off?']
         })
       )
     }
@@ -235,7 +235,7 @@ function animate() {
           rectangle2: battleZone
         }) &&
         overlappingArea > (player.width * player.height) / 2 &&
-        Math.random() < 0.01
+        Math.random() < 0.1
       ) {
         // deactivate current animation loop
         window.cancelAnimationFrame(animationId)
