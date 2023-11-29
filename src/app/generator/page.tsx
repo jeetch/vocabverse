@@ -4,12 +4,14 @@ import { FC, useState } from "react";
 // import { promptTemplateCall } from "../actions/promptTemplateCall"
 import { promptTemplateCall } from "@/actions/promptTemplateCall";
 import { FieldValues, useForm } from "react-hook-form";
-import dotenv from "dotenv";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import { wordlingGenerator } from "@/actions/wordlingGenerator";
+import { Press_Start_2P } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const player = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 
 const Page = () => {
   const {} = getKindeServerSession();
@@ -27,31 +29,45 @@ const Page = () => {
   });
 
   const [loading, setLoading] = useState(false);
-  const [res, setRes] = useState<string>("There are no bad questions");
+  const [res, setRes] = useState<string>(
+    "Enter a word or try 'abate', 'garrulous', 'munificent' and try it out!"
+  );
   const [sdprompt, setSdprompt] = useState<string>("");
+  const [wordling_name, setWordling_name] = useState<string>("");
+  const [wordling_desc, setWordling_desc] = useState<string>(
+    "Enter a word or try abate, garrulous, munificent.."
+  );
+  const [wordling_word, setWordling_word] = useState<string>("");
+  const [wordling_sentence, setWordling_sentence] = useState<string>("");
   const [prediction, setPrediction] = useState(null);
   const [error, setError] = useState(null);
-
-  dotenv.config();
 
   const onSubmit = async (data: any) => {
     setLoading(true);
     const gptresponse = await promptTemplateCall(
       data.product,
-      "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"
-      // process.env.OPENAI_API_KEY || "" // Use optional chaining
+      process.env.NEXT_PUBLIC_OPENAI_API_KEY || "" // Use optional chaining
     );
 
     const jsonResponse =
       typeof gptresponse === "string" ? JSON.parse(gptresponse) : gptresponse;
     const gpt_prompt = jsonResponse.prompt;
+    const wordling_name = jsonResponse.name;
+    const wordling_desc = jsonResponse.description;
+    const wordling_word = jsonResponse.actual_meaning;
+    const wordling_sentence = jsonResponse.sentence;
 
     setRes(gptresponse);
     setSdprompt(gpt_prompt);
+    setWordling_name(wordling_name);
+    setWordling_desc(wordling_desc);
+    setWordling_word(wordling_word);
+    setWordling_sentence(wordling_sentence);
+    setLoading(false);
 
     // Image response
 
-    // const response = await fetch("/api/predictions", {
+    // const response = await fetch("/api/image", {
     //   method: "POST",
     //   headers: {
     //     "Content-Type": "application/json",
@@ -68,19 +84,14 @@ const Page = () => {
     //   return;
     // }
     // setPrediction(prediction);
-
-    //   console.log({ prediction });
-    //   setPrediction(prediction);
-
-    setLoading(false);
   };
 
   return (
     <>
       <MaxWidthWrapper className="mt-24">
         <div className="flex-col justify-center items-center h-screen space-x-4">
-          <h1 className="text-2xl font-bold mb-4">
-            Gerate your own wordlings!
+          <h1 className={cn("text-2xl mb-4", player.className)}>
+            Generate your own wordlings!
           </h1>
 
           <div className="flex flex-col gap-4">
@@ -102,11 +113,29 @@ const Page = () => {
             <div className="text-center">
               {loading && <p>Loading...</p>}
               {!loading && res && (
-                <div>
-                  <p>{res}</p>
-                  <p>{sdprompt}</p>
-                </div>
+                <>
+                  <h1 className={cn("text-2xl mt-24 mb-4", player.className)}>
+                    {wordling_name}
+                  </h1>
+
+                  <p className={cn("text-md mt-14 mb-4", player.className)}>
+                    {wordling_desc}
+                  </p>
+
+                  <div className="mt-14 text-xs font-italic text-gray-600">
+                    <p>{sdprompt}</p>
+                  </div>
+
+                  <p className={cn("text-sm mt-48 mb-4", player.className)}>
+                    {wordling_word}
+                  </p>
+
+                  <p className={cn("text-sm mb-4", player.className)}>
+                    {wordling_sentence}
+                  </p>
+                </>
               )}
+              {!loading && prediction && <p>{prediction}</p>}
             </div>
           </div>
         </div>

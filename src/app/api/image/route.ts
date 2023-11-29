@@ -2,11 +2,11 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import Replicate from 'replicate';
 
 const replicate = new Replicate({
-  auth: "r8_Tp5tbTxyqKj6Ya3WRwRDqcMmWM4P6u74GMMaB" ,
+  auth: process.env.NEXT_PUBLIC_REPLICATE_API_TOKEN,
 });
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse){
-  if (!process.env.REPLICATE_API_TOKEN) {
+export async function POST(req: NextApiRequest, res: NextApiResponse){
+  if (!process.env.NEXT_PUBLIC_REPLICATE_API_TOKEN) {
     throw new Error(
       "The REPLICATE_API_TOKEN environment variable is not set. See README.md for instructions on how to set it."
     );
@@ -21,8 +21,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     input: { prompt: req.body.prompt },
   });
 
+  console.log(prediction.error )
+
   if (prediction?.error) {
     res.statusCode = 500;
+    console.log(prediction.error )
     res.end(JSON.stringify({ detail: prediction.error }));
     return;
   }
