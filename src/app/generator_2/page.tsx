@@ -79,16 +79,16 @@ const Page: FC = () => {
     setLoading(true);
     setImgloading(true);
     setPrediction(null);
-    // const gptresponse = await promptTemplateCall(
-    //   product,
-    //   process.env.NEXT_PUBLIC_OPENAI_API_KEY || "" // Use optional chaining
-    // );
+    const gptresponse = await promptTemplateCall(
+      product,
+      process.env.NEXT_PUBLIC_OPENAI_API_KEY || "" // Use optional chaining
+    );
 
     // setJsonResponse(
     //   typeof gptresponse === "string" ? JSON.parse(gptresponse) : gptresponse
     // );
 
-    setRes("gptresponse");
+    setRes(gptresponse);
     // setSdprompt(jsonResponse.prompt);
     // setWordling_name(jsonResponse.name);
     // setWordling_desc(jsonResponse.description);
