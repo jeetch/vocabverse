@@ -23,19 +23,19 @@ const Page: FC = () => {
   ];
 
   const [product, setProduct] = useState<string>("");
-  // const [loading, setLoading] = useState(false);
-  // const [imgloading, setImgloading] = useState(false);
-  // const [res, setRes] = useState<string>("");
-  // const [sdprompt, setSdprompt] = useState<string>("");
-  // const [wordling_name, setWordling_name] = useState<string>("");
-  // const [wordling_desc, setWordling_desc] = useState<string>(
-  //   "Enter a word or try abate, garrulous, munificent.."
-  // );
-  // const [wordling_word, setWordling_word] = useState<string>("");
-  // const [wordling_sentence, setWordling_sentence] = useState<string>("");
-  // const [prediction, setPrediction] = useState(null);
-  // const [error, setError] = useState<string>("");
-  // const [jsonResponse, setJsonResponse] = useState<any>("");
+  const [loading, setLoading] = useState(false);
+  const [imgloading, setImgloading] = useState(false);
+  const [res, setRes] = useState<string>("");
+  const [sdprompt, setSdprompt] = useState<string>("");
+  const [wordling_name, setWordling_name] = useState<string>("");
+  const [wordling_desc, setWordling_desc] = useState<string>(
+    "Enter a word or try abate, garrulous, munificent.."
+  );
+  const [wordling_word, setWordling_word] = useState<string>("");
+  const [wordling_sentence, setWordling_sentence] = useState<string>("");
+  const [prediction, setPrediction] = useState(null);
+  const [error, setError] = useState<string>("");
+  const [jsonResponse, setJsonResponse] = useState<any>("");
 
   const setRandomWord = () => {
     const randomWord = greWords[Math.floor(Math.random() * greWords.length)];
@@ -71,24 +71,24 @@ const Page: FC = () => {
 
   const onSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    // if (!product) {
-    //   setError("Product field is required");
-    //   return;
-    // }
-    // event.preventDefault();
-    // setLoading(true);
-    // setImgloading(true);
-    // setPrediction(null);
-    // const gptresponse = await promptTemplateCall(
-    //   product,
-    //   process.env.NEXT_PUBLIC_OPENAI_API_KEY || "" // Use optional chaining
-    // );
+    if (!product) {
+      setError("Product field is required");
+      return;
+    }
+    event.preventDefault();
+    setLoading(true);
+    setImgloading(true);
+    setPrediction(null);
+    const gptresponse = await promptTemplateCall(
+      product,
+      process.env.NEXT_PUBLIC_OPENAI_API_KEY || "" // Use optional chaining
+    );
 
     // setJsonResponse(
     //   typeof gptresponse === "string" ? JSON.parse(gptresponse) : gptresponse
     // );
 
-    // setRes(gptresponse);
+    setRes(gptresponse);
     // setSdprompt(jsonResponse.prompt);
     // setWordling_name(jsonResponse.name);
     // setWordling_desc(jsonResponse.description);
@@ -136,19 +136,20 @@ const Page: FC = () => {
             </form>
 
             <div className="text-center items-center justify-center">
-              {/* {loading && <p>Loading...</p>}
+              {loading && <p>Loading...</p>}
               {!loading && res && (
                 <>
                   <h1 className={cn("text-2xl mt-14 mb-4", player.className)}>
-                    {wordling_name}
+                    {res}
+                    {/* {wordling_name} */}
                   </h1>
-                  <p className={cn("text-md mt-14 mb-4", player.className)}>
+                  {/* <p className={cn("text-md mt-14 mb-4", player.className)}>
                     {wordling_desc}
-                  </p>
+                  </p> */}
                 </>
               )}
 
-              {imgloading && (
+              {/* {imgloading && (
                 <p>Imagining your Wordling... might take a minute...</p>
               )}
               {!imgloading && prediction && (
