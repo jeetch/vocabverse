@@ -79,6 +79,7 @@ const Page = () => {
   };
 
   const onSubmit = async (data: any) => {
+    data.preventDefault();
     setLoading(true);
     setImgloading(true);
     setPrediction(null);
