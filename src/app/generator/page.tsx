@@ -156,9 +156,9 @@ const Page = () => {
                   </p>{" "}
                 </>
               )}
-              <div className="mt-14 text-xs font-italic text-gray-600">
+              {/* <div className="mt-14 text-xs font-italic text-gray-600">
                 <p>{process.env.NEXT_PUBLIC_OPENAI_API_KEY}</p>
-              </div>
+              </div> */}
 
               {imgloading && (
                 <p>Imagining your Wordling... might take a minute...</p>
