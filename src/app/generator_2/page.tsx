@@ -1,10 +1,7 @@
 "use client";
 
-import { FC, useState } from "react";
-// import { promptTemplateCall } from "../actions/promptTemplateCall"
+import { FC, useState, ChangeEvent, FormEvent } from "react";
 import { promptTemplateCall } from "@/actions/promptTemplateCall";
-import { FieldValues, useForm } from "react-hook-form";
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
@@ -14,7 +11,7 @@ import Image from "next/image";
 
 const player = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 
-const Page = () => {
+const Page: FC = () => {
   const greWords = [
     "amiable",
     "soporific",
@@ -25,23 +22,7 @@ const Page = () => {
     "taciturn",
   ];
 
-  const setRandomWord = () => {
-    const randomWord = greWords[Math.floor(Math.random() * greWords.length)];
-    setValue("product", randomWord);
-  };
-
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    formState: { errors },
-    reset,
-  } = useForm<FieldValues>({
-    defaultValues: {
-      product: "",
-    },
-  });
-
+  const [product, setProduct] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const [imgloading, setImgloading] = useState(false);
   const [res, setRes] = useState<string>("");
@@ -54,6 +35,14 @@ const Page = () => {
   const [wordling_sentence, setWordling_sentence] = useState<string>("");
   const [prediction, setPrediction] = useState(null);
   const [error, setError] = useState<string>("");
+  const setRandomWord = () => {
+    const randomWord = greWords[Math.floor(Math.random() * greWords.length)];
+    setProduct(randomWord);
+  };
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setProduct(event.target.value);
+  };
 
   const sendPromptToAPI = async (prompt: string) => {
     try {
@@ -78,13 +67,18 @@ const Page = () => {
     }
   };
 
-  const onSubmit = async (data: any) => {
-    data.preventDefault();
+  const onSubmit = async (event: FormEvent) => {
+    event.preventDefault();
+    if (!product) {
+      setError("Product field is required");
+      return;
+    }
+    event.preventDefault();
     setLoading(true);
     setImgloading(true);
     setPrediction(null);
     const gptresponse = await promptTemplateCall(
-      data.product,
+      product,
       process.env.NEXT_PUBLIC_OPENAI_API_KEY || "" // Use optional chaining
     );
 
@@ -97,7 +91,7 @@ const Page = () => {
     const wordling_sentence = jsonResponse.sentence;
 
     setRes(gptresponse);
-    setSdprompt(gpt_prompt);
+    // setSdprompt(gpt_prompt);
     setWordling_name(wordling_name);
     setWordling_desc(wordling_desc);
     setWordling_word(wordling_word);
@@ -122,16 +116,14 @@ const Page = () => {
           </h1>
 
           <div className={cn("flex flex-col gap-4", player.className)}>
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              className="flex items-center gap-2"
-            >
+            <form onSubmit={onSubmit} className="flex items-center gap-2">
               <Input
                 placeholder="Enter the word you want to learn"
-                {...register("product", { required: true })}
+                value={product}
+                onChange={handleInputChange}
                 className=""
               />
-              {errors.question && <p>This field is required</p>}
+              {error && <p>{error}</p>}
               <Button type="submit" className="h-full" variant={"outline"}>
                 Submit
               </Button>
@@ -155,9 +147,6 @@ const Page = () => {
                   <p className={cn("text-md mt-14 mb-4", player.className)}>
                     {wordling_desc}
                   </p>
-                  {/* <div className="mt-14 text-xs font-italic text-gray-600">
-                    <p>{sdprompt}</p>
-                  </div>{" "} */}
                 </>
               )}
 
@@ -194,9 +183,10 @@ const Page = () => {
               {!imgloading && res && (
                 <>
                   <Button
-                    type="submit"
+                    type="button"
                     className={cn("mt-4 text-md h-full", player.className)}
                     variant={"outline"}
+                    // The onClick handler for this button can be added as per requirement
                   >
                     Add wordling to your vocabverse!
                   </Button>

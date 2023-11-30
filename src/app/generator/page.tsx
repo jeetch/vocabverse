@@ -130,7 +130,7 @@ const Page = () => {
                 {...register("product", { required: true })}
                 className=""
               />
-              {errors.question && <p>This field is required</p>}
+              {/* {errors.question && <p>This field is required</p>} */}
               <Button type="submit" className="h-full" variant={"outline"}>
                 Submit
               </Button>
@@ -193,7 +193,6 @@ const Page = () => {
               {!imgloading && res && (
                 <>
                   <Button
-                    type="submit"
                     className={cn("mt-4 text-md h-full", player.className)}
                     variant={"outline"}
                   >
