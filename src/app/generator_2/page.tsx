@@ -35,6 +35,8 @@ const Page: FC = () => {
   const [wordling_sentence, setWordling_sentence] = useState<string>("");
   const [prediction, setPrediction] = useState(null);
   const [error, setError] = useState<string>("");
+  const [jsonResponse, setJsonResponse] = useState<any>("");
+
   const setRandomWord = () => {
     const randomWord = greWords[Math.floor(Math.random() * greWords.length)];
     setProduct(randomWord);
@@ -82,26 +84,22 @@ const Page: FC = () => {
       process.env.NEXT_PUBLIC_OPENAI_API_KEY || "" // Use optional chaining
     );
 
-    const jsonResponse =
-      typeof gptresponse === "string" ? JSON.parse(gptresponse) : gptresponse;
-    const gpt_prompt = jsonResponse.prompt;
-    const wordling_name = jsonResponse.name;
-    const wordling_desc = jsonResponse.description;
-    const wordling_word = jsonResponse.actual_meaning;
-    const wordling_sentence = jsonResponse.sentence;
+    setJsonResponse(
+      typeof gptresponse === "string" ? JSON.parse(gptresponse) : gptresponse
+    );
 
     setRes(gptresponse);
-    // setSdprompt(gpt_prompt);
-    setWordling_name(wordling_name);
-    setWordling_desc(wordling_desc);
-    setWordling_word(wordling_word);
-    setWordling_sentence(wordling_sentence);
+    setSdprompt(jsonResponse.prompt);
+    setWordling_name(jsonResponse.name);
+    setWordling_desc(jsonResponse.description);
+    setWordling_word(jsonResponse.actual_meaning);
+    setWordling_sentence(jsonResponse.sentence);
     setLoading(false);
 
     // Image response
 
     // Call the function with the desired prompt
-    sendPromptToAPI(gpt_prompt);
+    sendPromptToAPI(sdprompt);
 
     // }
     // setPrediction(prediction);
