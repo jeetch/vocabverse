@@ -114,7 +114,7 @@ const Page: FC = () => {
           </h1>
 
           <div className={cn("flex flex-col gap-4", player.className)}>
-            <form onSubmit={onSubmit} className="flex items-center gap-2">
+            <form className="flex items-center gap-2">
               <Input
                 placeholder="Enter the word you want to learn"
                 value={product}
@@ -122,7 +122,12 @@ const Page: FC = () => {
                 className=""
               />
               {/* {error && <p>{error}</p>} */}
-              <Button type="submit" className="h-full" variant={"outline"}>
+              <Button
+                onClick={onSubmit}
+                type="submit"
+                className="h-full"
+                variant={"outline"}
+              >
                 Submit
               </Button>
               <Button
