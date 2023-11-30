@@ -18,7 +18,7 @@ const Page = () => {
   const greWords = [
     "amiable",
     "soporific",
-    "timorous",
+    // "timorous",
     "garrulous",
     "ostentatious",
     "abate",
