@@ -79,16 +79,16 @@ const Page: FC = () => {
     setLoading(true);
     setImgloading(true);
     setPrediction(null);
-    const gptresponse = await promptTemplateCall(
-      product,
-      process.env.NEXT_PUBLIC_OPENAI_API_KEY || "" // Use optional chaining
-    );
+    // const gptresponse = await promptTemplateCall(
+    //   product,
+    //   process.env.NEXT_PUBLIC_OPENAI_API_KEY || "" // Use optional chaining
+    // );
 
     // setJsonResponse(
     //   typeof gptresponse === "string" ? JSON.parse(gptresponse) : gptresponse
     // );
 
-    setRes(gptresponse);
+    setRes("gptresponse");
     // setSdprompt(jsonResponse.prompt);
     // setWordling_name(jsonResponse.name);
     // setWordling_desc(jsonResponse.description);
@@ -114,7 +114,7 @@ const Page: FC = () => {
           </h1>
 
           <div className={cn("flex flex-col gap-4", player.className)}>
-            <form className="flex items-center gap-2">
+            <form onSubmit={onSubmit} className="flex items-center gap-2">
               <Input
                 placeholder="Enter the word you want to learn"
                 value={product}
@@ -122,12 +122,7 @@ const Page: FC = () => {
                 className=""
               />
               {/* {error && <p>{error}</p>} */}
-              <Button
-                onClick={onSubmit}
-                type="submit"
-                className="h-full"
-                variant={"outline"}
-              >
+              <Button type="submit" className="h-full" variant={"outline"}>
                 Submit
               </Button>
               <Button
@@ -146,7 +141,6 @@ const Page: FC = () => {
                 <>
                   <h1 className={cn("text-2xl mt-14 mb-4", player.className)}>
                     {res}
-                    {/* {wordling_name} */}
                   </h1>
                   {/* <p className={cn("text-md mt-14 mb-4", player.className)}>
                     {wordling_desc}
