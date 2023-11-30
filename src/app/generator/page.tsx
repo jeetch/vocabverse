@@ -17,8 +17,15 @@ const player = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 const Page = () => {
   const {} = getKindeServerSession();
 
-  const greWords = ["amiable"];
-  // , "garrulous", "munificent", "abate", "taciturn"];
+  const greWords = [
+    "amiable",
+    "soporific",
+    "timorous",
+    "garrulous",
+    "ostentatious",
+    "abate",
+    "taciturn",
+  ];
 
   const setRandomWord = () => {
     const randomWord = greWords[Math.floor(Math.random() * greWords.length)];
