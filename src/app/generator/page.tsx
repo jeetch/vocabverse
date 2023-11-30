@@ -1,5 +1,5 @@
 "use client";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+
 import { FC, useState } from "react";
 // import { promptTemplateCall } from "../actions/promptTemplateCall"
 import { promptTemplateCall } from "@/actions/promptTemplateCall";
@@ -15,8 +15,6 @@ import Image from "next/image";
 const player = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 
 const Page = () => {
-  const {} = getKindeServerSession();
-
   const greWords = [
     "amiable",
     "soporific",

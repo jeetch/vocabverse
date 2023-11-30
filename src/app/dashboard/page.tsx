@@ -4,7 +4,7 @@ import { Press_Start_2P } from "next/font/google";
 
 const player = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 
-import Link from "next/link";
+// import Link from "next/link";
 
 const Page = () => {
   return (
@@ -18,8 +18,8 @@ const Page = () => {
         Welcome Adventurer!
       </h1>
       <div className="flex justify-center items-stretch space-x-4">
-        <Link href="/game">
-          <div className="flex flex-col items-center bg-white bg-opacity-10 hover:bg-opacity-20 border border-gray-200 rounded-lg shadow cursor-pointer p-20">
+        <a href="/game">
+          <div className="flex flex-col h-full items-center bg-white bg-opacity-10 hover:bg-opacity-20 border border-gray-200 rounded-lg shadow cursor-pointer p-20">
             <div className="text-gray-200 text-center">
               <h2 className="text-2xl font-bold mb-4">Continue Your Journey</h2>
               <p className="font-normal">
@@ -27,9 +27,9 @@ const Page = () => {
               </p>
             </div>
           </div>
-        </Link>
-        <Link href="/generator">
-          <div className="flex flex-col items-center bg-white bg-opacity-10 hover:bg-opacity-20 border border-gray-200 rounded-lg shadow cursor-pointer p-20">
+        </a>
+        <a href="/generator">
+          <div className="flex flex-col h-full items-center bg-white bg-opacity-10 hover:bg-opacity-20 border border-gray-200 rounded-lg shadow cursor-pointer p-20">
             <div className="text-gray-200 text-center">
               <h2 className="text-2xl font-bold mb-4">
                 Generate Custom Wordlings
@@ -39,7 +39,7 @@ const Page = () => {
               </p>
             </div>
           </div>
-        </Link>
+        </a>
       </div>
     </div>
   );
