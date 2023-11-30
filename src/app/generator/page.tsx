@@ -89,24 +89,19 @@ const Page = () => {
 
     const jsonResponse =
       typeof gptresponse === "string" ? JSON.parse(gptresponse) : gptresponse;
-    const gpt_prompt = jsonResponse.prompt;
-    const wordling_name = jsonResponse.name;
-    const wordling_desc = jsonResponse.description;
-    const wordling_word = jsonResponse.actual_meaning;
-    const wordling_sentence = jsonResponse.sentence;
 
     setRes(gptresponse);
-    setSdprompt(gpt_prompt);
-    setWordling_name(wordling_name);
-    setWordling_desc(wordling_desc);
-    setWordling_word(wordling_word);
-    setWordling_sentence(wordling_sentence);
+    setSdprompt(jsonResponse.prompt);
+    setWordling_name(jsonResponse.name);
+    setWordling_desc(jsonResponse.description);
+    setWordling_word(jsonResponse.actual_meaning);
+    setWordling_sentence(jsonResponse.sentence);
     setLoading(false);
 
     // Image response
 
     // Call the function with the desired prompt
-    sendPromptToAPI(gpt_prompt);
+    sendPromptToAPI(jsonResponse.prompt);
 
     // }
     // setPrediction(prediction);

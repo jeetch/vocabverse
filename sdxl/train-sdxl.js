@@ -18,7 +18,7 @@ async function main() {
         input_images: 'https://github.com/jeetch/vocabverse/raw/main/sdxl/wordlings_dataset_v1.zip'
       }
     });
-  console.log(`URL: https://replicate.com/p/${training.id}`);
+  // console.log(`URL: https://replicate.com/p/${training.id}`);
 }
 
 main();
