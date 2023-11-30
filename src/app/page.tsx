@@ -59,7 +59,7 @@ export default function Home() {
           learn vocabulary while having fun for your standardized tests
         </p>
 
-        <RegisterLink
+        <LoginLink
           className={buttonVariants({
             size: "lg",
             className: cn(
@@ -71,7 +71,7 @@ export default function Home() {
         >
           Let&apos;s Go!
           {/* <ArrowRight className="ml-2 h-5 w-5" /> */}
-        </RegisterLink>
+        </LoginLink>
       </MaxWidthWrapper>
 
       {/* value proposition section */}

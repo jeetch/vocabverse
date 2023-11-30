@@ -17,18 +17,8 @@ const player = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 const Page = () => {
   const {} = getKindeServerSession();
 
-  const greWords = [
-    "abate",
-    "abdicate",
-    "aberration",
-    "abstain",
-    "adversity",
-    "aesthetic",
-    "amiable",
-    "anachronistic",
-    "arid",
-    "asylum",
-  ];
+  const greWords = ["amiable"];
+  // , "garrulous", "munificent", "abate", "taciturn"];
 
   const setRandomWord = () => {
     const randomWord = greWords[Math.floor(Math.random() * greWords.length)];
@@ -165,7 +155,9 @@ const Page = () => {
                 </>
               )}
 
-              {imgloading && <p>Imagining your Wordling...</p>}
+              {imgloading && (
+                <p>Imagining your Wordling... might take a minute...</p>
+              )}
               {!imgloading && prediction && (
                 <>
                   <div className="text-center">
