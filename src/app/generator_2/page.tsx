@@ -94,7 +94,7 @@ const Page: FC = () => {
     // setWordling_desc(jsonResponse.description);
     // setWordling_word(jsonResponse.actual_meaning);
     // setWordling_sentence(jsonResponse.sentence);
-    // setLoading(false);
+    setLoading(false);
 
     // // Image response
 
