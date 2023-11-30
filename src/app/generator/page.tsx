@@ -153,12 +153,12 @@ const Page = () => {
                   </h1>
                   <p className={cn("text-md mt-14 mb-4", player.className)}>
                     {wordling_desc}
-                  </p>
-                  {/* <div className="mt-14 text-xs font-italic text-gray-600">
-                    <p>{sdprompt}</p>
-                  </div>{" "} */}
+                  </p>{" "}
                 </>
               )}
+              <div className="mt-14 text-xs font-italic text-gray-600">
+                <p>{process.env.NEXT_PUBLIC_OPENAI_API_KEY}</p>
+              </div>
 
               {imgloading && (
                 <p>Imagining your Wordling... might take a minute...</p>
