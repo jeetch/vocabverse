@@ -117,24 +117,28 @@ const Page: FC = () => {
 
           <div className={cn("flex flex-col gap-4", player.className)}>
             <form onSubmit={onSubmit} className="flex items-center gap-2">
-              <Input
+              <input
                 placeholder="Enter the word you want to learn"
                 value={product}
                 onChange={handleInputChange}
                 className=""
               />
               {error && <p>{error}</p>}
-              <Button type="submit" className="h-full" variant={"outline"}>
+              <button
+                type="submit"
+                className="h-full"
+                // variant={"outline"}
+              >
                 Submit
-              </Button>
-              <Button
+              </button>
+              <button
                 type="button"
                 className="h-full"
-                variant={"outline"}
+                // variant={"outline"}
                 onClick={setRandomWord}
               >
                 Random word
-              </Button>
+              </button>
             </form>
 
             <div className="text-center items-center justify-center">
@@ -156,12 +160,12 @@ const Page: FC = () => {
               {!imgloading && prediction && (
                 <>
                   <div className="text-center">
-                    <Image
+                    <img
                       src={prediction}
                       alt="product preview"
                       width={500}
                       height={500}
-                      quality={100}
+                      // quality={100}
                       className="mx-auto"
                     />
                   </div>
@@ -182,14 +186,14 @@ const Page: FC = () => {
 
               {!imgloading && res && (
                 <>
-                  <Button
+                  <button
                     type="button"
                     className={cn("mt-4 text-md h-full", player.className)}
-                    variant={"outline"}
+                    // variant={"outline"}
                     // The onClick handler for this button can be added as per requirement
                   >
                     Add wordling to your vocabverse!
-                  </Button>
+                  </button>
                 </>
               )}
             </div>
