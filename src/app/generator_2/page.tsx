@@ -75,7 +75,6 @@ const Page: FC = () => {
       setError("Product field is required");
       return;
     }
-    event.preventDefault();
     setLoading(true);
     setImgloading(true);
     setPrediction(null);
