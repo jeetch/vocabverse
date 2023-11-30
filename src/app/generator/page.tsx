@@ -71,7 +71,7 @@ const Page = () => {
         if (response.status === 200 && data.image && data.image.length > 0) {
           const imageUrl = data.image[0];
           // Use the imageUrl as needed
-          console.log(imageUrl);
+          // console.log(imageUrl);
           setPrediction(imageUrl);
           setImgloading(false);
         } else {
