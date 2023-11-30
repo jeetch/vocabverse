@@ -7,6 +7,9 @@ const player = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 // import Link from "next/link";
 
 const Page = () => {
+  const { getUser } = getKindeServerSession();
+  const user = getUser();
+
   return (
     <div
       className={cn(
